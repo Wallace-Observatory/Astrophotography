@@ -31,5 +31,19 @@ The graph below illustrates the Square Root Rule. Because noise is random (stoch
 
 <img width="857" height="567" alt="image" src="https://github.com/user-attachments/assets/a3d6e525-9093-4389-aec3-d99c82e546ef" />
 
-# Install Siril & Script
-From the repository, https://github.com/Wallace-Observatory/Astrophotography/ - download the calibration files (10 x bias and 10 x flats) and script by clicking "base".   Save this to a directory on your computer.  
+## Install Siril
+1. Download the calibration files (10 x bias and 10 x flats) and script from Dropbox: https://www.dropbox.com/scl/fo/zj7r6fl8tdwes736rpdof/ABrtz7S_3aVtvt2fSBU-Zn4?rlkey=70gqd1hir5gu6d45vugabollb&st=hgiurlml&dl=0
+2. Unzip this directory structure to a temp folder on your harddrive.
+3. Your instructor will provide a link to your target images.  Copy those .fits files into the 'lights' subfolder.
+4. After you open Siril for the first time, it may give you a tour of the main buttons in the app (worth reading!).
+## Set Home directory and Check Images
+5. It is always a good idea to check your images before running scripts blindly.
+6. <img width="725" height="520" alt="image" src="https://github.com/user-attachments/assets/97070c3f-87bb-4500-b90e-20d91bcff41b" />
+    _You will notice the Home button (it looks like a house) at the top left.  Click that and you will direct Siril to the directory that contains all of your subfolders._
+7. We need to point Siril to the custom script, 'WAO_OSC_Mercury.ssf'.  Click 'Scripts' button, select Script Editor and --> \File\Open, find the directories you just unzipped and then open the script.
+
+## Run Script
+6. Run the script from the Script Editor --> \Script\Run
+7. If you keep an eye on the console window to the right, you will see all of the steps stream by.  If you have a fast computer, this 
+   
+
