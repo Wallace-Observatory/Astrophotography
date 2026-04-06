@@ -26,5 +26,6 @@ Signal-to-Noise Ratio (SNR) vs. Number of Frames (
 )
 The graph below illustrates the Square Root Rule. Because noise is random (stochastic), it cancels out at a rate of 
 . Note the "knee" in the curve: you get a massive boost early on, but eventually, you hit diminishing returns where you must quadruple your effort just to double your clarity.
-Graph image
+
+<img width="857" height="567" alt="image" src="https://github.com/user-attachments/assets/a3d6e525-9093-4389-aec3-d99c82e546ef" />
 
