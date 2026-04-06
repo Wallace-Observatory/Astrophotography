@@ -2,7 +2,8 @@
 Basic AP tools, scripts and sample data to get you started.  
 
 We recommend starting with Siril, as it is free and works on PC, Mac and Linux OS's.  You can find it here: https://siril.org/
-_Current version as of April 2026 is 1.4.2 _
+
+Current version as of April 2026 is _1.4.2_
 
 **Astrophotography** 
 At this point, you have probably planned your observation, submitted the request and waited patiently for the clouds to part so that the automated telescope images your target.  By submitting target coordinates in RA & DEC, you have effectively decided on the composition of the image.  
@@ -22,10 +23,8 @@ Weighted Averaging: We don't treat all data equally. By using -weight=wfwhm, the
 The Result:
 You transform 10 grainy, artifact-filled snapshots into one high-fidelity, 32-bit master file ready for scientific stretching.
 
-Signal-to-Noise Ratio (SNR) vs. Number of Frames (
-)
-The graph below illustrates the Square Root Rule. Because noise is random (stochastic), it cancels out at a rate of 
-. Note the "knee" in the curve: you get a massive boost early on, but eventually, you hit diminishing returns where you must quadruple your effort just to double your clarity.
+**Signal-to-Noise Ratio (SNR) vs. Number of Frames (N)**
+The graph below illustrates the Square Root Rule. Because noise is random (stochastic), it cancels out at a rate of $\sqrt{N}$. Note the "knee" in the curve: you get a massive boost early on, but eventually, you hit diminishing returns where you must quadruple your effort just to double your clarity.
 
 <img width="857" height="567" alt="image" src="https://github.com/user-attachments/assets/a3d6e525-9093-4389-aec3-d99c82e546ef" />
 
