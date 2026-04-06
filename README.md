@@ -2,8 +2,11 @@
 _Basic AP tools, scripts and sample data to get you started._
 
 We recommend starting with Siril, as it is free and works on PC, Mac and Linux OS's.  You can find it here: https://siril.org/
-
 Current version as of April 2026 is _1.4.2_
+
+### Note, you do not need to digest all of the following information to get a nice image.  Though, if you were wondering, "Why are going through all this trouble?", then see the two images below.
+
+
 
 ## Planning
 At this point, you have probably planned your observation, submitted the request and waited patiently for the clouds to part so that the automated telescope images your target.  By submitting target coordinates in RA & DEC, you have effectively decided on the composition of the image.  
@@ -15,16 +18,18 @@ There's no "right" way, but unless you plan on using a single image for your fin
 _Why stack? What is stacking?_ 
 
 Think of each 2-minute exposure as a "noisy" data sample. Your goal is to extract a weak, constant signal (a nebula) from a high-variance background (electronic noise and satellite interference).
+
 ### The Strategy:
 We use Winsorized Sigma Clipping with Additive Scaling. In plain English: we equalize the baseline of every image, filter out the statistical "outliers," and then perform a weighted average.
 - Normalization (The Baseline): Before comparing frames, we use -norm=addscale. This ensures that even if light pollution or transparency shifted during your session, every frame is adjusted to have the same "zero point" (background) and "gain" (signal intensity).
 - The Winsorized Filter: With only 10 frames, a single satellite trail is a massive outlier. Winsorized Clipping "tames" these extremes by replacing them with neighboring values before calculating the standard deviation. This prevents a satellite from "poisoning" the mean.
 - Weighted Averaging: We don't treat all data equally. By using -weight=wfwhm, the algorithm gives a higher "vote" to frames with the sharpest focus and best atmospheric stability.
-### The Result:
-You transform 10 grainy, artifact-filled snapshots into one high-fidelity, 32-bit master file ready for scientific stretching.
+**The Result:** You transform 10 grainy, artifact-filled snapshots into one high-fidelity, 32-bit master file ready for histogram stretching.
 
 ## Signal-to-Noise Ratio (SNR) vs. Number of Frames (N)
 The graph below illustrates the Square Root Rule. Because noise is random (stochastic), it cancels out at a rate of $\sqrt{N}$. Note the "knee" in the curve: you get a massive boost early on, but eventually, you hit diminishing returns where you must quadruple your effort just to double your clarity.
 
 <img width="857" height="567" alt="image" src="https://github.com/user-attachments/assets/a3d6e525-9093-4389-aec3-d99c82e546ef" />
 
+# Install Siril & Script
+From the repository, https://github.com/Wallace-Observatory/Astrophotography/ - download the calibration files (10 x bias and 10 x flats) and script by clicking "base".   Save this to a directory on your computer.  
