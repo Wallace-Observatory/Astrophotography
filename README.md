@@ -51,15 +51,22 @@ The graph below illustrates the Square Root Rule. Because noise is random (stoch
 ## Post Processing
 10. When the script is done, you should have ~4 images in your 'Home' directory.  'result.fit' is just the stacked image.  'result_post.fit' has all of the corrections (remove green noise, gradient and sky subtraction, photometric correction).  'result_autostretch.fit' applies a brute force histogram stretch, similar to the button we showed you earlier.  Finally, there's a TIF file that is ready for final edits if you like what you see from the autostretch version.
 
-<img width="632" height="422" alt="image" src="https://github.com/user-attachments/assets/16defd29-e67c-41ed-aefd-0dd92649f4ca" />
-**result.fit**
-<img width="629" height="421" alt="image" src="https://github.com/user-attachments/assets/71fd0766-3b65-4e28-bba9-14a0ff62c365" />
-**result_post.fit**
-<img width="634" height="421" alt="image" src="https://github.com/user-attachments/assets/0a2a60e6-9ce2-4ab5-bbc3-44cdee863c13" />
+<img width="630" height="420" alt="image" src="https://github.com/user-attachments/assets/16defd29-e67c-41ed-aefd-0dd92649f4ca" />
+### result.fit
+<img width="630" height="420" alt="image" src="https://github.com/user-attachments/assets/71fd0766-3b65-4e28-bba9-14a0ff62c365" />
+### result_post.fit
+<img width="630" height="420" alt="image" src="https://github.com/user-attachments/assets/0a2a60e6-9ce2-4ab5-bbc3-44cdee863c13" />
+### result_autostretch.fit
 
 
 
+11. There's a couple more basic steps we recommend doing in Siril.  Let's assume we like result_post.fit the best and use that as our starting point for final edits
+12. Cropping - In Siril, draw a box with the mouse for the portion of the image you want to keep.  Right click, Crop.
+13. RGB Align - Often the color looks shifted or misaligned.  Rigth click, RGB Align, 2-Pass.
+14. The rest is up to you.  You can play around with various Image Processing and Tools in Siril.  Try various stretches in Siril or you could leave those edits to your favorite image editing app.
+15. Finally, we need to save the image.  In the top bar, to the right, look for what looks like a download symbol.  If you're done, save the image as a .png and send to your instructor.  If you want to try printing out your image or further edits in PS or GIMP, you will want to save as a 32-bit TIF file.
 
-11. There's a couple more basic steps we recommend doing in Siril.  Let's assume we like result_post.fit the best and use that as our starting point for final edits.
-12. 
+## Troubleshooting
+16. Sometimes we put things in the wrong place or the script gets interupted and ERRORS happen.  Try deleting the fit/tif files in the directory and the cache & process subfolders.  Make sure you are in the right directory, that you copied the lights to the lights folder and run script again.
+17. Feel free to contact Tim, he's happy to help!
 
