@@ -4,7 +4,7 @@ _Basic AP tools, scripts and sample data to get you started._
 We recommend starting with Siril, as it is free and works on PC, Mac and Linux OS's.  You can find it here: https://siril.org/
 Current version as of April 2026 is _1.4.2_
 
-### Note, you do not need to digest all of the following information to get a nice image.  Though, if you were wondering, "Why are going through all this trouble?", then see the two images below.
+### Note, you do not need to digest all of the following information to get a nice image.  Though, if you were wondering, "Why are going through all this trouble?", then see the two images below. Otherwise, skip to Install Siril below.  
 
 
 
@@ -14,15 +14,15 @@ You may have just went with the default coordinates for the centroid of the targ
 It's also possible you made a thoughtful assessment of your subject and used the rule of thirds (https://www.dpreview.com/articles/7143352326/the-rule-of-thirds-a-simple-way-to-improve-your-images) or leading lines (https://digital-photography-school.com/how-to-use-leading-lines-for-better-compositions/).  
 There's no "right" way, but unless you plan on using a single image for your final submission, we do not recommend _cropping_ your image(s) until after you are finished with **stacking** your images.
 
-## The "Stacking" Algorithm: Harvesting Photons, Rejecting Chaos
+## The "Stacking" Algorithm: Harvesting Photons, Rejecting Noise
 _Why stack? What is stacking?_ 
 
 Think of each 2-minute exposure as a "noisy" data sample. Your goal is to extract a weak, constant signal (a nebula) from a high-variance background (electronic noise and satellite interference).
 
 ### The Strategy:
 We use Winsorized Sigma Clipping with Additive Scaling. In plain English: we equalize the baseline of every image, filter out the statistical "outliers," and then perform a weighted average.
-- Normalization (The Baseline): Before comparing frames, we use -norm=addscale. This ensures that even if light pollution or transparency shifted during your session, every frame is adjusted to have the same "zero point" (background) and "gain" (signal intensity).
-- The Winsorized Filter: With only 10 frames, a single satellite trail is a massive outlier. Winsorized Clipping "tames" these extremes by replacing them with neighboring values before calculating the standard deviation. This prevents a satellite from "poisoning" the mean.
+- Normalization : Before comparing frames, we use -norm=addscale. This ensures that even if light pollution or transparency shifted during your session, every frame is adjusted to have the same "zero point" (background) and "gain" (signal intensity).
+- The Winsorized Filter: With only 10 frames, a single satellite trail is a massive outlier. Winsorized Clipping "tames" these extremes by replacing them with neighboring values before calculating the standard deviation. This prevents a satellite from skewing the mean.
 - Weighted Averaging: We don't treat all data equally. By using -weight=wfwhm, the algorithm gives a higher "vote" to frames with the sharpest focus and best atmospheric stability.
 **The Result:** You transform 10 grainy, artifact-filled snapshots into one high-fidelity, 32-bit master file ready for histogram stretching.
 
@@ -38,12 +38,28 @@ The graph below illustrates the Square Root Rule. Because noise is random (stoch
 4. After you open Siril for the first time, it may give you a tour of the main buttons in the app (worth reading!).
 ## Set Home directory and Check Images
 5. It is always a good idea to check your images before running scripts blindly.
-6. <img width="725" height="520" alt="image" src="https://github.com/user-attachments/assets/97070c3f-87bb-4500-b90e-20d91bcff41b" />
-    _You will notice the Home button (it looks like a house) at the top left.  Click that and you will direct Siril to the directory that contains all of your subfolders._
-7. We need to point Siril to the custom script, 'WAO_OSC_Mercury.ssf'.  Click 'Scripts' button, select Script Editor and --> \File\Open, find the directories you just unzipped and then open the script.
+6. You will notice the Home button (it looks like a house) at the top left.  Click that and you will direct Siril to the directory that contains all of your subfolders.  After that you can use the Open button to open any of your images for inspection.  Play around with 
+   the non-destructive stretch buttons at bottom right.  By default it is set to linear, now try Autostretch to give you a preview of stretching without corrupting your raw fits files.  
+   <img width="725" height="520" alt="image" src="https://github.com/user-attachments/assets/97070c3f-87bb-4500-b90e-20d91bcff41b" />
 
-## Run Script
-6. Run the script from the Script Editor --> \Script\Run
-7. If you keep an eye on the console window to the right, you will see all of the steps stream by.  If you have a fast computer, this 
    
+## Run Script
+7. We need to point Siril to the custom script, 'WAO_OSC_Mercury.ssf'.  Click 'Scripts' button, select Script Editor and --> \File\Open, find the directories you just unzipped and then open the script.
+8. Run the script from the Script Editor --> \Script\Run
+9. If you keep an eye on the console window to the right, you will see all of the steps stream by.  If you have a fast computer, this might only take a couple minutes.
+
+## Post Processing
+10. When the script is done, you should have ~4 images in your 'Home' directory.  'result.fit' is just the stacked image.  'result_post.fit' has all of the corrections (remove green noise, gradient and sky subtraction, photometric correction).  'result_autostretch.fit' applies a brute force histogram stretch, similar to the button we showed you earlier.  Finally, there's a TIF file that is ready for final edits if you like what you see from the autostretch version.
+
+<img width="632" height="422" alt="image" src="https://github.com/user-attachments/assets/16defd29-e67c-41ed-aefd-0dd92649f4ca" />
+**result.fit**
+<img width="629" height="421" alt="image" src="https://github.com/user-attachments/assets/71fd0766-3b65-4e28-bba9-14a0ff62c365" />
+**result_post.fit**
+<img width="634" height="421" alt="image" src="https://github.com/user-attachments/assets/0a2a60e6-9ce2-4ab5-bbc3-44cdee863c13" />
+
+
+
+
+11. There's a couple more basic steps we recommend doing in Siril.  Let's assume we like result_post.fit the best and use that as our starting point for final edits.
+12. 
 
