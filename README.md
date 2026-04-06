@@ -2,6 +2,7 @@
 _Basic AP tools, scripts and sample data to get you started._
 
 We recommend starting with Siril, as it is free and works on PC, Mac and Linux OS's.  You can find it here: https://siril.org/
+
 Current version as of April 2026 is _1.4.2_
 
 ### Note, you do not need to digest all of the following information to get a nice image.  Though, if you were wondering, "Why are going through all this trouble?", then see the two images below. Otherwise, skip to Install Siril below.  
@@ -32,7 +33,7 @@ The graph below illustrates the Square Root Rule. Because noise is random (stoch
 <img width="857" height="567" alt="image" src="https://github.com/user-attachments/assets/a3d6e525-9093-4389-aec3-d99c82e546ef" />
 
 ## Install Siril
-1. Download the calibration files (10 x bias and 10 x flats) and script from Dropbox: https://www.dropbox.com/scl/fo/zj7r6fl8tdwes736rpdof/ABrtz7S_3aVtvt2fSBU-Zn4?rlkey=70gqd1hir5gu6d45vugabollb&st=hgiurlml&dl=0
+1. Download the calibration files (10 x bias and 10 x flats) and script from Dropbox: [https://www.dropbox.com/scl/fo/zj7r6fl8tdwes736rpdof/ABrtz7S_3aVtvt2fSBU-Zn4?rlkey=70gqd1hir5gu6d45vugabollb&st=hgiurlml&dl=0](https://www.dropbox.com/scl/fo/zj7r6fl8tdwes736rpdof/ABrtz7S_3aVtvt2fSBU-Zn4?rlkey=yr5oqav0zu7od5rbvt193d2d5&st=rb7ltgi4&dl=0)
 2. Unzip this directory structure to a temp folder on your harddrive.
 3. Your instructor will provide a link to your target images.  Copy those .fits files into the 'lights' subfolder.
 4. After you open Siril for the first time, it may give you a tour of the main buttons in the app (worth reading!).
@@ -52,10 +53,15 @@ The graph below illustrates the Square Root Rule. Because noise is random (stoch
 10. When the script is done, you should have ~4 images in your 'Home' directory.  'result.fit' is just the stacked image.  'result_post.fit' has all of the corrections (remove green noise, gradient and sky subtraction, photometric correction).  'result_autostretch.fit' applies a brute force histogram stretch, similar to the button we showed you earlier.  Finally, there's a TIF file that is ready for final edits if you like what you see from the autostretch version.
 
 <img width="630" height="420" alt="image" src="https://github.com/user-attachments/assets/16defd29-e67c-41ed-aefd-0dd92649f4ca" />
+
 ### result.fit
+
 <img width="630" height="420" alt="image" src="https://github.com/user-attachments/assets/71fd0766-3b65-4e28-bba9-14a0ff62c365" />
+
 ### result_post.fit
+
 <img width="630" height="420" alt="image" src="https://github.com/user-attachments/assets/0a2a60e6-9ce2-4ab5-bbc3-44cdee863c13" />
+
 ### result_autostretch.fit
 
 
