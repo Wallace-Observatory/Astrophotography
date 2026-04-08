@@ -1,0 +1,96 @@
+############################################
+# WAO_OSC_Mercury
+# Script for Siril 1.4.2
+# Apr. 2026 
+# (C) Tim "bro" Brothers bro@mit.edu 
+# 
+#
+########### PROCESSING SCRIPT #############
+#
+# Script for OSC or one-shot-color or RGB image preprocessing
+#
+# Requries fits images in the working
+# directory, within 3 directories:
+#   biases/ 10+ bias FITS files
+#   flats/ 10 flat FITS files
+#   lights/ this is where you will put YOUR color FITS images from Wallace
+#   darks/ no need for darks at low exposures - skip this part!
+############################################
+
+########### PreProcessing ##################
+requires 1.4.2
+
+# Convert Bias Frames to .fit files
+cd biases
+convert bias -out=../process
+cd ../process
+
+# Stack Bias Frames to bias_stacked.fit
+stack bias rej 3 3 -nonorm
+cd ..
+
+# Convert Flat Frames to .fit files
+cd flats
+convert flat -out=../process
+cd ../process
+
+# Pre-process Flat Frames
+calibrate flat -bias=bias_stacked
+
+# Stack Flat Frames to pp_flat_stacked.fit
+stack pp_flat rej 3 3 -norm=mul
+cd ..
+
+# Convert Light Frames to .fit files
+cd lights
+convert light -out=../process
+cd ../process
+
+# Pre-process Light Frames
+calibrate light -bias=bias_stacked -flat=pp_flat_stacked -cfa -equalize_cfa -debayer
+
+# Align lights
+register pp_light
+
+# Stack calibrated lights to result.fit
+# If satellites persist, lower the 3's to 2's.
+
+stack r_pp_light rej w 3 3 -norm=addscale -weight=wfwhm -32b -out=../result
+cd ..
+# at this point the individual frames are stacked into a 32-bit fit, result.fit
+
+############## Post Processing #############
+# Step 1 platesolving the image
+# image orientation and get us ready for color correction
+load result.fit
+platesolve
+# From here we work on a postprocessing fits file, leaving the original alone.
+save result_post.fit
+# Step 2 subtract the sky signal or gradient, but avoid nebulosity
+load result_post.fit
+subsky -rbf -samples=40 -tolerance=0.40 -smooth=0.60
+save result_post.fit
+# Step 3 Remove green noise ... b/c RGGB!
+load result_post.fit
+rmgreen 0 1
+save result_post.fit
+# Step 4 Photometric Color Calibration
+pcc -catalog=gaia
+save result_post.fit
+# Step 5 Try autostretch, if you don't like it, Ctrl-Z for undo!!
+load result_post.fit
+autostretch
+save result_autostretch.fit
+savetif result_autostretch
+load result_autostretch.fit
+#                          All too easy.
+# *** Note you can Undo (Ctrl-Z) to unstreth image.
+# Feel free to try other stretching methods, but make sure you are viewing them
+# in Autostretch.
+# Once you are happy :) right click on image, select RGB align and then 2-pass.
+# Save as a 32-bit TIFF and then edit in your favorite image editting app.
+
+
+
+
+
