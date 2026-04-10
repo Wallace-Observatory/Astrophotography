@@ -33,7 +33,7 @@ There is no "right way" to processing astrophotos.  In our scripts, we will use 
 
 
 ## Install Siril
-1. Download the calibration files (10 x bias and 10 x flats) and script from Dropbox: [https://www.dropbox.com/scl/fo/zj7r6fl8tdwes736rpdof/ABrtz7S_3aVtvt2fSBU-Zn4?rlkey=70gqd1hir5gu6d45vugabollb&st=hgiurlml&dl=0](https://www.dropbox.com/scl/fo/zj7r6fl8tdwes736rpdof/ABrtz7S_3aVtvt2fSBU-Zn4?rlkey=yr5oqav0zu7od5rbvt193d2d5&st=rb7ltgi4&dl=0)
+1. Download the calibration files (10 x bias and 10 x flats) and script from Dropbox: **/12.409-2026-images/WAOimages/Siril Base Files**
 2. Unzip this directory structure to a temp folder on your harddrive.
 3. Your instructor will provide a DropBox link to your data folder.  Copy those .fits files into the 'lights' subfolder.
 4. After you open Siril for the first time, it may give you a tour of the main buttons in the app (worth reading!).
